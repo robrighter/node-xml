@@ -1,14 +1,8 @@
 var sys = require('sys');
 var posix = require('posix');
-var xml = require("./lib/node.xml");
+var xml = require("./lib/node-xml");
 
 var parser = new SAXDriver();
-
-//element handler
-elementhandler = function () {
-    this.startElement = function(name, atts) {
-    sys.puts("Found Element\n" + "Name:" + name + "\nNumber of Attributes:" + atts.getLength() + "\n\n\n");}
-}
 
  parser.setDocumentHandler({
      startElement : function(name, atts) {
@@ -29,7 +23,6 @@ elementhandler = function () {
   });
 
 posix.cat("sample.xml").addCallback(function (content) {
-  //sys.puts(content);
   sys.puts('...starting parsing');
   parser.parse(content);
 });
