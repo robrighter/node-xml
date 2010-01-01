@@ -5,9 +5,9 @@ node-xml
 
  node-xml is a pure javascript asynchronous and interruptible xml parser. 
 
- This library repackages components from the "XML for Script" library written in 2001 and
- released under LGPL (http://xmljs.sourceforge.net). That library was written by
- David Joham (djoham@yahoo.com) and Scott Severtson and Copyright (C) 2001 - 2002. 
+ This library repackages components from the "XML for Script" library released
+ under LGPL (http://xmljs.sourceforge.net). That library was written by
+ David Joham (djoham@yahoo.com) and Scott Severtson. 
  It has been modified into node-xml to:
     (1) become asynchronous
     (2) become interruptible
@@ -56,7 +56,7 @@ As an example, you can register for the document events that you are interested 
          
          endElement : function(name) {
            sys.puts("<= End: " + name + "\n");
-           parser.pause();// pase the parser
+           parser.pause();// pause the parser
            setTimeout(function (){parser.resume();}, 200); //resume the parser
          }
      });

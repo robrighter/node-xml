@@ -11,7 +11,7 @@ var parser = new SAXDriver();
      
      endElement : function(name) {
        sys.puts("<= End: " + name + "\n");
-       parser.pause();// pase the parser
+       parser.pause();// pause the parser
        setTimeout(function (){parser.resume();}, 200); //resume the parser
      }
  });
