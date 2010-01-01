@@ -3,7 +3,7 @@ node-xml
 
 (C) Rob Righter (@robrighter) 2009, Licensed under the MIT-LICENSE
 
- node-xml is a pure javascript asynchronous and interruptible xml parser. 
+ node-xml is an xml parser for node.js written in javascript. 
 
  This library repackages components from the "XML for Script" library released
  under LGPL (http://xmljs.sourceforge.net). That library was written by
