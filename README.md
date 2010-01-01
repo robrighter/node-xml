@@ -18,32 +18,33 @@ API
 
 At this point node-xml only supports sax style parsing. To use the parser you can register for 3 types of events:
 
-(1) Document Events ( via setDocumentHandler() ):
-characters : function(data, start, length)
-endDocument : function()
-endElement : function(name)
-processingInstruction : function(target, data) 
-setDocumentLocator : function(locator) 
-startElement : function(name, atts)
-startDocument : function() 
-comment : function(data, start, length)
-endCDATA : function()
-startCDATA : function() {
+    (1) Document Events ( via setDocumentHandler() ):
+    characters : function(data, start, length)
+    endDocument : function()
+    endElement : function(name)
+    processingInstruction : function(target, data) 
+    setDocumentLocator : function(locator) 
+    startElement : function(name, atts)
+    startDocument : function() 
+    comment : function(data, start, length)
+    endCDATA : function()
+    startCDATA : function() {
 
 
-(2) Error Events (via setErrorHandler()):
-error : function(exception)
-fatalError : function(exception)
-warning : function(exception)
+    (2) Error Events (via setErrorHandler()):
+    error : function(exception)
+    fatalError : function(exception)
+    warning : function(exception)
+    
+    Exception objects have 3 methods:
+    a. exception.getMessage()
+    b. exception.getLineNumber()
+    c. exception.getColumnNumber()
 
-Exception objects have 3 methods:
-a. exception.getMessage()
-b. exception.getLineNumber()
-c. exception.getColumnNumber()
 
-(3) Lexical Events (via setLexicalHandler()):
-_fullCharacterDataReceived = function(fullCharacterData)
-_handleCharacterData = function()  {
+    (3) Lexical Events (via setLexicalHandler()):
+    _fullCharacterDataReceived = function(fullCharacterData)
+    _handleCharacterData = function()  {
 
 
 As an example, you can register for the document events that you are interested in like this:
