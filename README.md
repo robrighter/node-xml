@@ -91,7 +91,6 @@ EXAMPLE USAGE
       });
      
     posix.cat("sample.xml").addCallback(function (content) {
-      //sys.puts(content);
       sys.puts('...starting parsing');
       parser.parse(content);
     });
