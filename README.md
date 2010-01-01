@@ -16,7 +16,7 @@ node-xml
 API
 ---
 
-At this point node-xml only supports sax style parsing. To use the parser you can register for 3 types of events:
+Node-xml supports sax style parsing. To use the parser you can register for 3 types of events:
 
     (1) Document Events ( via setDocumentHandler() ):
     characters : function(data, start, length)
