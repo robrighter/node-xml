@@ -1,7 +1,7 @@
 node-xml
 ===================
 
-(C) Rob Righter (@robrighter) 2009, Licensed under the MIT-LICENSE
+(C) Rob Righter (@robrighter) 2009 - 2010, Licensed under the GNU Lesser General Public License (http://www.gnu.org/copyleft/lesser.html)
 
  node-xml is an xml parser for node.js written in javascript. 
 
