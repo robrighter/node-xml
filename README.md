@@ -45,7 +45,7 @@ As an example, you can register for the document events that you are interested 
     
     parser.setDocumentHandler({
          startElement : function(name, atts) {
-           sys.puts("=> Started: " + name + " (" + atts.getLength() + " Attributes)");
+           sys.puts("=> Started: " + name + " (Attributes: " + JSON.stringify(atts) + " )");
          },
          
          endElement : function(name) {
