@@ -1,18 +1,12 @@
 node-xml
 ===================
 
-(C) Rob Righter (@robrighter) 2009 - 2010, Licensed under the GNU Lesser General Public License (http://www.gnu.org/copyleft/lesser.html)
+(C) Rob Righter (@robrighter) 2009 - 2010, Licensed under the MIT-LICENSE
+Contributions from David Joham
 
  node-xml is an xml parser for node.js written in javascript. 
 
- This library repackages components from the "XML for Script" library released
- under LGPL (http://xmljs.sourceforge.net). That library was written by
- David Joham (djoham@yahoo.com) and Scott Severtson. 
- It has been modified into node-xml to:
-    (1) become asynchronous
-    (2) become interruptible
-    (3) utilize javascript closures
-
+ 
 API
 ---
 

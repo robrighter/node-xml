@@ -6,7 +6,7 @@ var parser = new SAXDriver();
 
  parser.setDocumentHandler({
      startElement : function(name, atts) {
-       sys.puts("=> Started: " + name + " (" + atts.getLength() + " Attributes)");
+       sys.puts("=> Started: " + name + " (Attributes: " + JSON.stringify(atts) + " )");
      },
      
      endElement : function(name) {
