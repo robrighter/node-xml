@@ -9,52 +9,21 @@ Contributions from David Joham
  
 API
 ---
+ 
+Node-xml supports sax style parsing. To use the parser you setup the event listeners:
 
-Node-xml supports sax style parsing. To use the parser you can register for 3 types of events:
-
-    (1) Document Events ( via setDocumentHandler() ):
-    characters : function(data, start, length)
-    endDocument : function()
-    endElement : function(name)
-    processingInstruction : function(target, data) 
-    setDocumentLocator : function(locator) 
-    startElement : function(name, atts)
-    startDocument : function() 
-    comment : function(data, start, length)
-    endCDATA : function()
-    startCDATA : function() {
-
-
-    (2) Error Events (via setErrorHandler()):
-    error : function(exception)
-    fatalError : function(exception)
-    warning : function(exception)
-    
-    Exception objects have 3 methods:
-    a. exception.getMessage()
-    b. exception.getLineNumber()
-    c. exception.getColumnNumber()
-
-
-    (3) Lexical Events (via setLexicalHandler()):
-    _fullCharacterDataReceived = function(fullCharacterData)
-    _handleCharacterData = function()  {
-
-
-As an example, you can register for the document events that you are interested in like this:
-    
-    parser.setDocumentHandler({
-         startElement : function(name, atts) {
-           sys.puts("=> Started: " + name + " (Attributes: " + JSON.stringify(atts) + " )");
-         },
-         
-         endElement : function(name) {
-           sys.puts("<= End: " + name + "\n");
-           parser.pause();// pause the parser
-           setTimeout(function (){parser.resume();}, 200); //resume the parser
-         }
-     });
-
+    var parser = new libxml.SaxParser(function(cb) {
+	  cb.onStartDocument(function() {});
+	  cb.onEndDocument(function() {});
+	  cb.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {});
+	  cb.onEndElementNS(function(elem, prefix, uri) {});
+	  cb.onCharacters(function(chars) {});
+	  cb.onCdata(function(cdata) {});
+	  cb.onComment(function(msg) {});
+	  cb.onWarning(function(msg) {});
+	  cb.onError(function(msg) {});
+	});
+	
 
 EXAMPLE USAGE
 -------------
