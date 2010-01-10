@@ -17,16 +17,16 @@ SaxParser
 Node-xml provides a SAX2 parser interface that can take a string, file.
 #SAX Parser#
 
-    new libxml.SaxParser()
+##new libxml.SaxParser()##
 
-* Instantiate a new SaxParser
-* returns: a SaxParser object
-	new libxml.SaxParser(callback)
+	* Instantiate a new SaxParser
+	* returns: a SaxParser object
+		new libxml.SaxParser(callback)
 
-* Instantiate a new SaxParser
-* returns: a SaxParser object
-* Arguments
-     + callback - a function that accepts the new sax parser as an argument
+	* Instantiate a new SaxParser
+	* returns: a SaxParser object
+	* Arguments
+     	* callback - a function that accepts the new sax parser as an argument
 
 
 #Parse#
