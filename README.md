@@ -31,14 +31,14 @@ Node-xml provides a SAX2 parser interface that can take a string, file.
 
 #Parse#
 
-	parser.parseString(string)
+##parser.parseString(string)##
 
 Parse an in memory string
 * return: boolean. true if no errors, false otherwise
 * Arguments
 	* string - a string representing the document to parse
 
-	parser.parseFile(filename)
+##parser.parseFile(filename)##
 
 Parse a file
 * return: boolean. true if no errors, false otherwise
@@ -47,15 +47,15 @@ Parse a file
 
 #Callbacks#
 
-	parser.onStartDocument(function() {})
+##parser.onStartDocument(function() {})##
 
 Called at the start of a document
 
-	parse.onEndDocument(function() {})
+##parse.onEndDocument(function() {})##
 
  Called at the end of the document parse
 
-	parser.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {})
+##parser.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {})##
 
 Called on an open element tag
 * Arguments
@@ -65,7 +65,7 @@ Called on an open element tag
 	* uri - the namespace URI of the element
 	* namespaces - an array of arrays: [[prefix, uri], [prefix, uri]]
 
-	parser.onEndElementNS(function(elem, prefix, uri) {})
+##parser.onEndElementNS(function(elem, prefix, uri) {})##
 
 Called at the close of an element
 * Arguments
@@ -73,31 +73,31 @@ Called at the close of an element
     * prefix - a string representing the namespace prefix of the element
     * uri - the namespace URI of the element
 
-	parser.onCharacters(function(chars) {})
+##parser.onCharacters(function(chars) {})##
 
 Called when a set of content characters is encountered
 * Arguments
 	* chars - a string of characters
 
-	parser.onCdata(function(cdata) {})
+##parser.onCdata(function(cdata) {})##
 
 Called when a CDATA is encountered
 * Arguments
 	* cdata - a string representing the CDATA
 
-	parser.onComment(function(msg) {})
+##parser.onComment(function(msg) {})##
 
 Called when a comment is encountered
-	* Arguments
-		* msg - a string representing the comment
+* Arguments
+	* msg - a string representing the comment
 
-		parser.onWarning(function(msg) {})
+##parser.onWarning(function(msg) {})##
 
 Called when a warning is encountered
-   * Arguments
-		* msg - a string representing the warning message
+* Arguments
+	* msg - a string representing the warning message
 
-		parser.onError(function(msg) {})
+##parser.onError(function(msg) {})##
 
 Called when an error is encountered
    * Arguments
