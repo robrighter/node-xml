@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<nutrition>
+<nutrition xmlns:d="http://www.diet.org/" xmlns:f="http://www.fastfood.com">
 
 <daily-values>
-	<total-fat units="g">65</total-fat>
+	<d:total-fat units="g">65</d:total-fat>
 	<saturated-fat units="g">20</saturated-fat>
 	<cholesterol units="mg">300</cholesterol>
 	<sodium units="mg">2400</sodium>
@@ -14,7 +14,7 @@
 <food>
 	<name>Avocado Dip</name>
 	<mfr>Sunnydale</mfr>
-	<serving units="g">29</serving>
+	<f:serving units="g">29</f:serving>
 	<calories total="110" fat="100"/>
 	<total-fat>11</total-fat>
 	<saturated-fat>3</saturated-fat>

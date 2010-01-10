@@ -10,50 +10,146 @@ Contributions from David Joham
 API
 ---
  
-Node-xml supports sax style parsing. To use the parser you setup the event listeners:
 
-    var parser = new libxml.SaxParser(function(cb) {
-	  cb.onStartDocument(function() {});
-	  cb.onEndDocument(function() {});
-	  cb.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {});
-	  cb.onEndElementNS(function(elem, prefix, uri) {});
-	  cb.onCharacters(function(chars) {});
-	  cb.onCdata(function(cdata) {});
-	  cb.onComment(function(msg) {});
-	  cb.onWarning(function(msg) {});
-	  cb.onError(function(msg) {});
-	});
+SaxParser
+---------
+
+Node-xml provides a SAX2 parser interface that can take a string, file.
+#SAX Parser#
+
+    new libxml.SaxParser()
+
+* Instantiate a new SaxParser
+* returns: a SaxParser object
+	new libxml.SaxParser(callback)
+
+* Instantiate a new SaxParser
+* returns: a SaxParser object
+* Arguments
+     + callback - a function that accepts the new sax parser as an argument
+
+
+#Parse#
+
+	parser.parseString(string)
+
+* Parse an in memory string
+* return: boolean. true if no errors, false otherwise
+* Arguments
++ string - a string representing the document to parse
+
+
+	parser.parseFile(filename)
+
+*Parse a file
+*return: boolean. true if no errors, false otherwise
+*Arguments
++filename - a string representing the file to be parsed
+
+Callbacks
+
+parser.onStartDocument(function() {})
+
+    Called at the start of a document
+
+parse.onEndDocument(function() {})
+
+    Called at the end of the document parse
+
+parser.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {})
+
+    Called on an open element tag
+    Arguments
+
+        * elem - a string representing the element name
+        * attrs - an array of arrays: [[key, value], [key, value]]
+        * prefix - a string representing the namespace prefix of the element
+        * uri - the namespace URI of the element
+        * namespaces - an array of arrays: [[prefix, uri], [prefix, uri]]
+
+parser.onEndElementNS(function(elem, prefix, uri) {})
+
+    Called at the close of an element
+    Arguments
+
+        * elem - a string representing the element name
+        * prefix - a string representing the namespace prefix of the element
+        * uri - the namespace URI of the element
+
+parser.onCharacters(function(chars) {})
+
+    Called when a set of content characters is encountered
+    Arguments
+
+        * chars - a string of characters
+
+parser.onCdata(function(cdata) {})
+
+    Called when a CDATA is encountered
+    Arguments
+
+        * cdata - a string representing the CDATA
+
+parser.onComment(function(msg) {})
+
+    Called when a comment is encountered
+    Arguments
+
+        * msg - a string representing the comment
+
+parser.onWarning(function(msg) {})
+
+    Called when a warning is encountered
+    Arguments
+
+        * msg - a string representing the warning message
+
+parser.onError(function(msg) {})
+
+    Called when an error is encountered
+    Arguments
+
+        * msg - a string representing the error message
+
+
 	
 
 EXAMPLE USAGE
 -------------
 
-    var sys = require('sys');
-    var posix = require('posix');
-    var xml = require("./lib/node-xml");
-     
-    var parser = new SAXDriver();
+	var sys = require('sys');
+	var xml = require("./lib/node-xml");
 	
-     	
-    parser.setDocumentHandler({
-         startElement : function(name, atts) {
-           sys.puts("=> Started: " + name + " (" + atts.getLength() + " Attributes)");
-         },
-     
-         endElement : function(name) {
-           sys.puts("<= End: " + name + "\n");
-           parser.pause();// pase the parser
-           setTimeout(function (){parser.resume();}, 200); //resume the parser
-         }
-     });
- 
-     parser.setErrorHandler({
-          error : function(exception) {
-            sys.puts("ERROR: " +exception.getMessage());
-          },
-      });
-     
-    posix.cat("sample.xml").addCallback(function (content) {
-      sys.puts('...starting parsing');
-      parser.parse(content);
-    });
+	var parser = new xml.SaxParser(function(cb) {
+	  cb.onStartDocument(function() {
+	      sys.puts('DOCUMENT STARTED');
+	  });
+	  cb.onEndDocument(function() {
+	      sys.puts('DOCUMENT ENDED');
+	  });
+	  cb.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {
+	      sys.puts("=> Started: " + elem + " uri="+uri +" (Attributes: " + JSON.stringify(attrs) + " )");
+	  });
+	  cb.onEndElementNS(function(elem, prefix, uri) {
+	      sys.puts("<= End: " + elem + " uri="+uri + "\n");
+	         parser.pause();// pause the parser
+	         setTimeout(function (){parser.resume();}, 200); //resume the parser
+	  });
+	  cb.onCharacters(function(chars) {
+	      //sys.puts('<CHARS>'+chars+"</CHARS>");
+	  });
+	  cb.onCdata(function(cdata) {
+	      sys.puts('<CDATA>'+cdata+"</CDATA>");
+	  });
+	  cb.onComment(function(msg) {
+	      sys.puts('<COMMENT>'+msg+"</COMMENT>");
+	  });
+	  cb.onWarning(function(msg) {
+	      sys.puts('<WARNING>'+msg+"</WARNING>");
+	  });
+	  cb.onError(function(msg) {
+	      sys.puts('<ERROR>'+JSON.stringify(msg)+"</ERROR>");
+	  });
+	});
+	
+	parser.parseFile("sample.xml");
