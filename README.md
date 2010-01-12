@@ -43,6 +43,12 @@ Parse a file
 * return: boolean. true if no errors, false otherwise
 * Arguments
 	* filename - a string representing the file to be parsed
+	
+##parser.pause()##
+pauses parsing of the document
+
+##parser.resume()##
+resumes parsing of the document
 
 #Callbacks#
 
