@@ -14,7 +14,8 @@ API
 SaxParser
 ---------
 
-Node-xml provides a SAX2 parser interface that can take a string, file.
+Node-xml provides a SAX2 parser interface that can take a string, file. The parser can take characters from the document in chunks. To send chunks of the document to the parser use 'parseString(xml)'
+
 #SAX Parser#
 
 ##new libxml.SaxParser()##
@@ -110,10 +111,10 @@ EXAMPLE USAGE
 	
 	var parser = new xml.SaxParser(function(cb) {
 	  cb.onStartDocument(function() {
-	      sys.puts('DOCUMENT STARTED');
+		
 	  });
 	  cb.onEndDocument(function() {
-	      sys.puts('DOCUMENT ENDED');
+		
 	  });
 	  cb.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {
 	      sys.puts("=> Started: " + elem + " uri="+uri +" (Attributes: " + JSON.stringify(attrs) + " )");
@@ -140,4 +141,19 @@ EXAMPLE USAGE
 	  });
 	});
 	
+
+	//example read from chunks
+	parser.parseString("<html><body>");
+	parser.parseString("<!-- This is the start");
+	parser.parseString(" and the end of a comment -->");
+	parser.parseString("and lots");
+	parser.parseString("and lots of text&am");
+	parser.parseString("p;some more.");
+	parser.parseString("<![CD");
+	parser.parseString("ATA[ this is");
+	parser.parseString(" cdata ]]>");
+	parser.parseString("</body");
+	parser.parseString("></html>");
+
+	//example read from file
 	parser.parseFile("sample.xml");
