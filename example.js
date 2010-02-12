@@ -34,6 +34,9 @@ var parser = new xml.SaxParser(function(cb) {
 });
 
 
+//example read from file
+parser.parseFile("sample.xml");
+
 //example read from chunks
 parser.parseString("<html><body>");
 parser.parseString("<!-- This is the start");
@@ -47,6 +50,6 @@ parser.parseString(" cdata ]]>");
 parser.parseString("</body");
 parser.parseString("></html>");
 
-//example read from file
-parser.parseFile("sample.xml");
+
+
 
