@@ -18,11 +18,11 @@ Node-xml provides a SAX2 parser interface that can take a string, file. The pars
 
 #SAX Parser#
 
-##new libxml.SaxParser()##
+##new xml.SaxParser()##
 	* Instantiate a new SaxParser
 	* returns: a SaxParser object
 
-##new libxml.SaxParser(callback)##
+##new xml.SaxParser(callback)##
 	* Instantiate a new SaxParser
 	* returns: a SaxParser object
 	* Arguments
