@@ -1,0 +1,6 @@
+{ "name" : "xml"
+, "version" : "0.0.1"
+, "author" : "Rob Righter <robrighter@gmail.com>"
+, "description" : "An xml parser for node.js written in javascript."
+, "main" : "./lib/node-xml"
+}
