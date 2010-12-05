@@ -11,7 +11,7 @@
     "dependencies": {
     },
     "description": "An xml parser for node.js written in Javascript.",
-    "author": "Isaac Z. Schlueter <i@izs.me>",
+    "author": "Rob Righter <robrighter@gmail.com>",
     "homepage": "https://github.com/robrighter/node-xml",
     "repository" :
     {
