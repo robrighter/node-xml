@@ -112,7 +112,7 @@ Called when an error is encountered
 EXAMPLE USAGE
 -------------
 
-	var sys = require('sys');
+	var util = require('util');
 	var xml = require("./lib/node-xml");
 	
 	var parser = new xml.SaxParser(function(cb) {
@@ -123,27 +123,27 @@ EXAMPLE USAGE
 		
 	  });
 	  cb.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {
-	      sys.puts("=> Started: " + elem + " uri="+uri +" (Attributes: " + JSON.stringify(attrs) + " )");
+	      util.log("=> Started: " + elem + " uri="+uri +" (Attributes: " + JSON.stringify(attrs) + " )");
 	  });
 	  cb.onEndElementNS(function(elem, prefix, uri) {
-	      sys.puts("<= End: " + elem + " uri="+uri + "\n");
+	      util.log("<= End: " + elem + " uri="+uri + "\n");
 	         parser.pause();// pause the parser
 	         setTimeout(function (){parser.resume();}, 200); //resume the parser
 	  });
 	  cb.onCharacters(function(chars) {
-	      //sys.puts('<CHARS>'+chars+"</CHARS>");
+	      //util.log('<CHARS>'+chars+"</CHARS>");
 	  });
 	  cb.onCdata(function(cdata) {
-	      sys.puts('<CDATA>'+cdata+"</CDATA>");
+	      util.log('<CDATA>'+cdata+"</CDATA>");
 	  });
 	  cb.onComment(function(msg) {
-	      sys.puts('<COMMENT>'+msg+"</COMMENT>");
+	      util.log('<COMMENT>'+msg+"</COMMENT>");
 	  });
 	  cb.onWarning(function(msg) {
-	      sys.puts('<WARNING>'+msg+"</WARNING>");
+	      util.log('<WARNING>'+msg+"</WARNING>");
 	  });
 	  cb.onError(function(msg) {
-	      sys.puts('<ERROR>'+JSON.stringify(msg)+"</ERROR>");
+	      util.log('<ERROR>'+JSON.stringify(msg)+"</ERROR>");
 	  });
 	});
 	
