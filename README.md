@@ -6,7 +6,10 @@ Contributions from David Joham
 
  node-xml is an xml parser for node.js written in javascript. 
 
- 
+# Install
+
+		npm install node-xml
+
 API
 ---
  
